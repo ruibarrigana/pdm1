@@ -1,0 +1,252 @@
+
+% =============================================
+% CONFIGURACAO DO DOCUMENTO
+% =============================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=2.3cm,
+    right=2.3cm,
+    top=2.5cm,
+    bottom=2.3cm
+}
+
+\usepackage[table]{xcolor}
+
+% Cores
+\definecolor{azulPDMI}{HTML}{1D5787}
+\definecolor{azulClaro}{HTML}{EAF3FA}
+\definecolor{cinzaLinha}{HTML}{D0D8DF}
+
+\colorlet{azul}{azulPDMI}
+\colorlet{azulclaro}{azulClaro}
+\definecolor{verde}{HTML}{248563}
+
+% Pacotes matematicos e graficos
+\usepackage{amsmath,amssymb}
+\usepackage{array,tabularx,longtable}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage[most]{tcolorbox}
+
+% Organizacao e formatacao
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage{needspace}
+
+% Espacamento geral
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\headheight}{26pt}
+\renewcommand{\arraystretch}{1.55}
+
+% =============================================
+% CABECALHOS E RODAPES
+% =============================================
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\newcommand{\currentparttitle}{}
+
+\newcommand{\partwithheader}[1]{%
+  \part{#1}%
+  \gdef\currentparttitle{Parte \thepart\ -- #1}%
+  \markboth{\currentparttitle}{}%
+}
+
+\renewcommand{\partmark}[1]{%
+  \gdef\currentparttitle{Parte \thepart\ -- #1}%
+  \markboth{\currentparttitle}{}%
+}
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\currentparttitle}
+  {\chaptername\ \thechapter\ -- #1}%
+}
+
+\fancyhead[L]{%
+  \small\textcolor{azulPDMI}{%
+    \textbf{\nouppercase{\leftmark}}%
+  }%
+}
+
+\fancyhead[R]{%
+  \small\textcolor{azulPDMI}{%
+    \textbf{\nouppercase{\rightmark}}%
+  }%
+}
+
+\fancyfoot[R]{%
+  \footnotesize Página \thepage\ de \pageref{LastPage}
+}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\headrule}{%
+  \hbox to\headwidth{%
+    \color{azulPDMI!35}%
+    \leaders\hrule height \headrulewidth\hfill
+  }%
+}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[L]{%
+    \small\textcolor{azulPDMI}{%
+      \textbf{\nouppercase{\leftmark}}%
+    }%
+  }
+  \fancyhead[R]{%
+    \small\textcolor{azulPDMI}{%
+      \textbf{\nouppercase{\rightmark}}%
+    }%
+  }
+  \fancyfoot[R]{%
+    \footnotesize Página \thepage\ de \pageref{LastPage}
+  }
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% =============================================
+% FORMATACAO DOS CAPITULOS
+% =============================================
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}
+  {\large\chaptername\ \thechapter}
+  {6pt}
+  {\LARGE}
+
+% Reduz o espaco acima e abaixo dos titulos
+\titlespacing*{\chapter}
+  {0pt}
+  {3pt}
+  {14pt}
+
+% =============================================
+% FORMATACAO DAS SECCOES
+% =============================================
+
+\titleformat{\section}
+  {\large\bfseries\color{azulPDMI}}
+  {}
+  {0pt}
+  {}
+
+\titlespacing*{\section}
+  {0pt}
+  {10pt}
+  {5pt}
+
+% =============================================
+% COMANDOS PERSONALIZADOS
+% =============================================
+
+\newcommand{\linhas}[1]{%
+  \par\vspace{2pt}%
+  \begingroup\color{cinzaLinha}%
+  \foreach \n in {1,...,#1}{%
+    \par\noindent\rule{\linewidth}{0.45pt}%
+    \vspace{0.36cm}%
+  }%
+  \par\endgroup\vspace{2pt}%
+}
+
+\newcommand{\pergunta}[1]{%
+  \textbf{#1}\enspace
+}
+
+\newcommand{\parte}[2]{%
+  \section*{#1%
+    \if\relax\detokenize{#2}\relax
+    \else\ --- #2\fi
+  }%
+}
+
+% =============================================
+% CAIXAS
+% =============================================
+
+\newtcolorbox{desafio}{
+  colback=azulClaro,
+  colframe=azulPDMI!45,
+  boxrule=0.5pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt
+}
+
+\newtcolorbox{nota}{
+  colback=azulClaro,
+  colframe=azulPDMI!35,
+  boxrule=0.4pt,
+  arc=1mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt
+}
+
+\newtcolorbox{conclusao}{
+  colback=azulClaro,
+  colframe=azulPDMI!45,
+  boxrule=0.5pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt
+}
+
+% =============================================
+% POLIGONOS DA TABELA DA AULA 1
+% =============================================
+
+\newcommand{\poligonoTabela}[1]{%
+  \begin{tikzpicture}[
+    x=0.83cm,y=0.72cm,
+    baseline=(current bounding box.center),
+    line join=round
+  ]
+    \ifcase#1\relax
+    \or\or\or
+      \draw[draw=azulPDMI,fill=azulClaro,thick]
+        (0.15,0.15)--(3.30,0.12)--(1.65,2.10)--cycle;
+    \or
+      \draw[draw=azulPDMI,fill=azulClaro,thick]
+        (0.15,0.20)--(3.30,0.15)--(3.20,2.15)--(0.40,2.30)--cycle;
+    \or
+      \draw[draw=azulPDMI,fill=azulClaro,thick]
+        (0.15,0.55)--(1.20,0.08)--(3.10,0.40)--
+        (3.15,1.85)--(1.45,2.35)--cycle;
+    \or
+      \draw[draw=azulPDMI,fill=azulClaro,thick]
+        (0.30,0.55)--(1.10,0.07)--(2.55,0.15)--
+        (3.35,1.10)--(2.75,2.25)--(0.65,2.15)--cycle;
+    \or
+      \draw[draw=azulPDMI,fill=azulClaro,thick]
+        (0.15,0.85)--(0.55,0.12)--(1.85,0.08)--
+        (3.20,0.75)--(3.05,1.75)--(2.05,2.35)--
+        (0.55,2.20)--cycle;
+    \fi
+  \end{tikzpicture}%
+}
+
+% Designacao dos capitulos
+\addto\captionsportuguese{%
+  \renewcommand{\chaptername}{Secção}%
+}

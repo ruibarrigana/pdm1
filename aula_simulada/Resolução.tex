@@ -1,0 +1,280 @@
+\begingroup
+\small
+\setlength{\parskip}{2pt}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\begin{center}
+{\Large\bfseries\color{azulPDMI}
+Quantos triângulos se escondem num polígono?}\\[3pt]
+{\small Resolução da tarefa de exploração -- aula simulada (50 minutos)}
+\end{center}
+
+\begin{tcolorbox}[
+colback=azulClaro,colframe=azulPDMI!40,boxrule=.5pt,
+arc=2mm,left=8pt,right=8pt,top=6pt,bottom=6pt]
+\textbf{Ideia matemática central.}
+A propriedade da soma dos ângulos internos de um triângulo
+($180^\circ$) permite determinar a soma dos ângulos internos de um
+polígono convexo, desde que este seja decomposto em triângulos que
+preencham toda a sua região interior sem sobreposições.
+A exploração dos exemplos conduz à expressão
+\[
+\boxed{S=(n-2)\times180^\circ,\qquad n\geq3,}
+\]
+cuja validade geral exige uma justificação matemática.
+\end{tcolorbox}
+
+\section*{Parte I -- À procura de uma estratégia}
+
+\subsection*{1.1. Quadrilátero e pentágono}
+
+Uma estratégia possível é traçar, a partir de um vértice, diagonais
+que decomponham o polígono em triângulos. Os desenhos seguintes
+ilustram essa estratégia.
+
+\begin{center}
+\begin{minipage}{.47\linewidth}
+\centering
+\begin{tikzpicture}[scale=.67,line join=round]
+\coordinate (A) at (.3,.2);
+\coordinate (B) at (4.3,.1);
+\coordinate (C) at (4.7,2.6);
+\coordinate (D) at (.5,2.9);
+\draw[thick,draw=azulPDMI,fill=azulClaro]
+  (A)--(B)--(C)--(D)--cycle;
+\draw[very thick,orange!85!black] (A)--(C);
+\node[below left] at (A) {$A$};
+\node[below right] at (B) {$B$};
+\node[above right] at (C) {$C$};
+\node[above left] at (D) {$D$};
+\end{tikzpicture}\\[3pt]
+{\small Quadrilátero: 2 triângulos}
+\end{minipage}\hfill
+\begin{minipage}{.47\linewidth}
+\centering
+\begin{tikzpicture}[scale=.64,line join=round]
+\coordinate (A) at (.4,.2);
+\coordinate (B) at (3.8,.1);
+\coordinate (C) at (5,2.2);
+\coordinate (D) at (2.8,3.4);
+\coordinate (E) at (.1,2);
+\draw[thick,draw=azulPDMI,fill=azulClaro]
+  (A)--(B)--(C)--(D)--(E)--cycle;
+\draw[very thick,orange!85!black] (A)--(C) (A)--(D);
+\node[below left] at (A) {$A$};
+\node[below right] at (B) {$B$};
+\node[right] at (C) {$C$};
+\node[above] at (D) {$D$};
+\node[left] at (E) {$E$};
+\end{tikzpicture}\\[3pt]
+{\small Pentágono: 3 triângulos}
+\end{minipage}
+\end{center}
+
+No quadrilátero $ABCD$, a diagonal $AC$ forma os triângulos
+$ABC$ e $ACD$. Portanto,
+\[
+S_4=2\times180^\circ=\boxed{360^\circ}.
+\]
+
+No pentágono $ABCDE$, as diagonais $AC$ e $AD$ formam os
+triângulos $ABC$, $ACD$ e $ADE$. Assim,
+\[
+S_5=3\times180^\circ=\boxed{540^\circ}.
+\]
+
+\textbf{Nota:} Esta é uma resolução possível, não a única.
+Podem escolher-se outros vértices e outras diagonais, desde que se
+obtenha uma decomposição válida. Um procedimento diferente, como
+ligar um ponto interior aos vértices, exige ter em conta os ângulos
+adicionais em torno desse ponto.
+
+\subsection*{1.2. Comparação com a estratégia de um colega}
+
+\textbf{Exemplo de resposta possível:}
+«Escolhemos diagonais diferentes, mas obtivemos os mesmos resultados:
+$360^\circ$ no quadrilátero e $540^\circ$ no pentágono.
+Em ambos os casos, dividimos a figura em triângulos e utilizámos a
+soma de $180^\circ$ em cada triângulo.»
+
+A resposta é aberta: os alunos podem ter utilizado estratégias distintas
+ou identificado dúvidas diferentes. Importa comparar os procedimentos,
+explicar por que são válidos e não apenas verificar se os resultados
+numéricos coincidem.
+
+\Needspace{9\baselineskip}
+\subsection*{Uma estratégia para experimentar -- alíneas a), b) e c)}
+
+\textbf{a)} A diagonal $AC$ do quadrilátero origina dois triângulos,
+$ABC$ e $ACD$.
+
+\textbf{b)} No pentágono, escolhendo $A$ como vértice de partida,
+traçam-se as diagonais $AC$ e $AD$, obtendo-se três triângulos:
+$ABC$, $ACD$ e $ADE$.
+
+\textbf{c)} Cada triângulo tem soma das amplitudes dos ângulos
+internos igual a $180^\circ$. Logo,
+\[
+\begin{aligned}
+S_4&=2\times180^\circ=360^\circ,\\
+S_5&=3\times180^\circ=540^\circ.
+\end{aligned}
+\]
+
+\subsection*{1.3. Justificação da soma dos ângulos dos triângulos}
+
+As diagonais traçadas no interior dos polígonos convexos
+originam triângulos cujas regiões interiores não se sobrepõem
+e cuja reunião é exatamente a região interior de cada polígono.
+
+Além disso, \textbf{os ângulos dos triângulos que têm o mesmo vértice
+do polígono recompõem, sem lacunas nem sobreposições, o ângulo
+interno desse vértice}. Por exemplo, no quadrilátero,
+\[
+\widehat{DAB}=\widehat{DAC}+\widehat{CAB}
+\quad\text{e}\quad
+\widehat{BCD}=\widehat{BCA}+\widehat{ACD}.
+\]
+Nos vértices $B$ e $D$, os ângulos dos triângulos coincidem
+com os ângulos internos correspondentes do quadrilátero.
+
+Assim, a soma de todos os ângulos internos dos triângulos é
+\textbf{exatamente} a soma dos ângulos internos do polígono;
+não são acrescentados ângulos novos em pontos interiores, porque
+os segmentos utilizados têm extremidades nos vértices do polígono.
+
+\section*{Parte II -- Da exploração à regra geral}
+
+\subsection*{2.1. Decomposição e preenchimento da tabela}
+
+Traçando as diagonais a partir de um mesmo vértice, obtém-se:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.24}
+\begin{tabularx}{\linewidth}{|
+>{\raggedright\arraybackslash}X|
+>{\centering\arraybackslash}p{2.0cm}|
+>{\centering\arraybackslash}p{2.5cm}|
+>{\centering\arraybackslash}p{3.25cm}|}
+\hline
+\rowcolor{azulClaro}
+\textbf{Polígono} &
+\textbf{N.º de lados} &
+\textbf{N.º de triângulos} &
+\textbf{Soma dos ângulos internos} \\\hline
+Triângulo & 3 & 1 & $1\times180^\circ=180^\circ$ \\\hline
+Quadrilátero & 4 & 2 & $2\times180^\circ=360^\circ$ \\\hline
+Pentágono & 5 & 3 & $3\times180^\circ=540^\circ$ \\\hline
+Hexágono & 6 & 4 & $4\times180^\circ=720^\circ$ \\\hline
+\end{tabularx}
+\end{center}
+
+\textbf{Construções esperadas:} no triângulo não é preciso
+traçar diagonais; no quadrilátero traça-se uma diagonal;
+no pentágono, duas; no hexágono, três. Em todos os casos,
+as diagonais partem de um único vértice e produzem,
+respetivamente, $1$, $2$, $3$ e $4$ triângulos.
+
+\subsection*{2.2. Relação entre o número de lados e o número de triângulos}
+
+\textbf{Resposta possível:}
+«O número de triângulos obtidos é sempre inferior em duas unidades
+ao número de lados do polígono. Quando passamos de um polígono
+de $n$ lados para outro de $n+1$ lados, obtemos mais um triângulo
+pela mesma estratégia de decomposição.»
+
+Se $m$ designar o número de triângulos, a relação é
+\[
+\boxed{m=n-2.}
+\]
+Nesta fase, os exemplos permitem \emph{conjeturar} a relação.
+A questão 2.4 destina-se a justificar que ela é válida em geral.
+
+\subsection*{2.3. Expressão para a soma dos ângulos internos}
+
+Se um polígono convexo com $n$ lados se decompõe em
+$n-2$ triângulos, e cada triângulo contribui com $180^\circ$,
+a soma $S$ das amplitudes dos ângulos internos é
+\[
+\boxed{S=(n-2)\times180^\circ.}
+\]
+
+Na expressão, $n$ representa o número de lados,
+$n-2$ o número de triângulos da decomposição,
+e $180^\circ$ a soma das amplitudes dos ângulos
+internos de cada triângulo. Por distributividade,
+pode também escrever-se
+\[
+S=180^\circ n-360^\circ.
+\]
+As duas expressões são equivalentes.
+
+\subsection*{2.4. Justificação para qualquer polígono convexo}
+
+Considere-se um polígono convexo com $n$ lados,
+sendo $n$ um número inteiro e $n\geq3$.
+Escolha-se um dos seus vértices, por exemplo $A$.
+
+Dos restantes $n-1$ vértices, dois são adjacentes a $A$:
+os extremos dos dois lados que aí se encontram.
+Os outros $n-3$ são não adjacentes, pelo que é possível
+ligar $A$ a cada um deles através de uma diagonal.
+
+Por o polígono ser \textbf{convexo}, essas diagonais
+ficam no interior do polígono. Traçadas a partir do mesmo
+vértice, não se cruzam no interior e dividem-no numa sequência
+de regiões triangulares, sem sobreposições nem espaços por preencher.
+
+Os $n-3$ segmentos interiores, juntamente com os dois lados
+incidentes em $A$, originam $n-2$ setores triangulares:
+\[
+\underbrace{n-3}_{\text{diagonais}}
++\underbrace{1}_{\text{região triangular adicional}}
+=\underbrace{n-2}_{\text{triângulos}}.
+\]
+Em particular, para $n=3$, não se traçam diagonais e
+obtém-se o próprio triângulo, em conformidade com a expressão.
+
+Como a soma das amplitudes dos ângulos internos dos triângulos
+coincide com a soma das amplitudes dos ângulos internos do
+polígono (questão 1.3), conclui-se que
+\[
+S=\underbrace{180^\circ+\cdots+180^\circ}_{n-2\text{ parcelas}}
+=\boxed{(n-2)\times180^\circ}.
+\]
+
+\textbf{A justificação não depende de verificar alguns exemplos:}
+explica por que razão a decomposição e a contagem dos triângulos
+funcionam para qualquer polígono convexo, com $n\geq3$ lados.
+
+\section*{Para concluir}
+
+Uma forma de completar a frase da ficha é:
+
+\begin{tcolorbox}[
+colback=azulClaro,colframe=azulPDMI!40,boxrule=.5pt,
+arc=2mm,left=8pt,right=8pt,top=6pt,bottom=6pt]
+«Num polígono convexo com $n$ lados, a soma das amplitudes
+dos ângulos internos é
+\[
+\boxed{S=(n-2)\times180^\circ}
+\]
+porque podemos dividir esse polígono em $n-2$ triângulos,
+sem sobreposições nem espaços por preencher,
+e a soma das amplitudes dos ângulos internos de cada
+triângulo é $180^\circ$.»
+\end{tcolorbox}
+
+\section*{Se houver tempo -- polígono convexo com 12 lados}
+
+Como $n=12$, a decomposição a partir de um vértice
+origina $12-2=10$ triângulos. Logo,
+\[
+S=(12-2)\times180^\circ
+=10\times180^\circ
+=\boxed{1800^\circ}.
+\]
+Não é necessário desenhar o polígono, pois a justificação
+da expressão geral garante a sua validade para $n=12$.
+
+\endgroup
