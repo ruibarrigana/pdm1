@@ -1,0 +1,31 @@
+{
+  "name": "LaTeX Environment",
+  "image": "texlive/texlive:latest",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "true",
+      "configureZshAsDefaultShell": "true",
+      "installOhMyZsh": "false",
+      "upgradePackages": "true"
+    },
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "latex-workshop.latex.autoBuild.run": "onSave",
+        "latex-workshop.view.pdf.internal.viewer": "tab"
+      }
+    }
+  },
+
+  "postCreateCommand": "tlmgr update --self && tlmgr install latexmk",
+  
+  "remoteUser": "root"
+}
