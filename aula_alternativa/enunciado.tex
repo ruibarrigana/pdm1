@@ -1,0 +1,375 @@
+\begin{center}
+{\LARGE\bfseries\color{azul}
+Quanto precisa de virar o gato?}\\[4pt]
+{\normalsize Uma investigação sobre ângulos
+internos e mudanças de direção}
+\end{center}
+
+\noindent
+Nome: \rule{9cm}{.4pt}
+\hfill
+N.º: \rule{2cm}{.4pt}
+
+\begin{desafio}
+\textbf{O desafio}\\[3pt]
+
+Um gato desloca-se em linha reta e,
+sempre que chega a um vértice,
+muda de direção para percorrer
+o lado seguinte de um polígono.
+
+\textbf{Como podemos descobrir quanto deve virar?}
+
+E será possível usar essas viragens
+para encontrar a soma das amplitudes
+dos ângulos internos de qualquer
+polígono convexo?
+
+\end{desafio}
+
+% =====================================
+% PARTE I
+% =====================================
+
+\parte{Parte I}{Prever, experimentar e explicar}
+
+Abre no \textbf{Scratch} o projeto
+fornecido pelo professor.
+
+O programa já está preparado:
+não precisas de construir os blocos.
+
+Sempre que premires a tecla
+\textbf{Espaço}, o gato pergunta
+\textbf{quantos lados} queres desenhar
+e \textbf{quantos graus} deve virar
+em cada vértice.
+
+O gato efetua uma viragem depois
+de percorrer \emph{cada} lado,
+incluindo o último.
+
+\begin{enumerate}[label=\textbf{1.\arabic*.}]
+
+\item
+Pretendes obter um quadrado.
+Introduz \textbf{4 lados} e uma
+viragem de \textbf{$80^\circ$}.
+
+Antes de executar o desenho,
+achas que o percurso vai fechar
+um quadrado?
+Explica a tua previsão.
+
+\linhas{2}
+
+\item
+Testa a tua previsão.
+Mantendo os quatro lados, procura
+uma viragem que permita desenhar
+um \textbf{quadrado}, sem alterar
+o comprimento dos lados.
+
+Regista o valor encontrado
+e explica a tua escolha.
+
+\linhas{2}
+
+\item
+No quadrado, a viragem e o
+ângulo interno têm ambos
+amplitude $90^\circ$.
+
+Acontecerá o mesmo em todos
+os polígonos?
+Explica a tua previsão.
+
+\linhas{2}
+
+\end{enumerate}
+
+\begin{nota}
+\textbf{Para observar com atenção:}
+
+Queremos desenhar o \emph{contorno de
+um polígono regular convexo},
+sem cruzamentos e percorrido
+uma única vez.
+
+Não basta que o gato termine
+no ponto onde começou.
+\end{nota}
+
+% =====================================
+% PARTE II
+% =====================================
+
+\parte{Parte II}{Investigar uma regularidade}
+
+O gato mantém sempre o mesmo
+comprimento de lado e a mesma
+amplitude de viragem, em cada tentativa.
+
+Investiga os polígonos
+\textbf{regulares convexos} da tabela.
+
+\begin{enumerate}[label=\textbf{2.\arabic*.}]
+
+\item
+Para cada número de lados, descobre
+a viragem que faz o gato desenhar
+o polígono pretendido.
+
+Regista o valor e calcula a
+\textbf{soma de todas as viragens}
+realizadas numa volta completa.
+
+\end{enumerate}
+
+\renewcommand{\arraystretch}{1.6}
+
+\begin{tabularx}{\linewidth}{
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}p{1.65cm}
+>{\centering\arraybackslash}p{2.7cm}
+>{\centering\arraybackslash}p{2.8cm}}
+
+\rowcolor{azulclaro}
+
+\textbf{Polígono} &
+\textbf{Lados} &
+\textbf{Viragem por vértice} &
+\textbf{Soma das viragens}
+\\ \hline
+
+Triângulo equilátero & 3 & & \\
+Quadrado & 4 & & \\
+Pentágono regular & 5 & & \\
+Hexágono regular & 6 & & \\
+
+\end{tabularx}
+
+\renewcommand{\arraystretch}{1.55}
+
+\begin{enumerate}[
+label=\textbf{2.\arabic*.},
+start=2]
+
+\item
+O que muda quando aumenta
+o número de lados?
+O que se mantém?
+
+Compara os resultados com
+os de um colega.
+
+\linhas{2}
+
+\item
+Se o gato desenhasse um polígono
+\textbf{regular convexo} com $n$ lados
+e efetuasse uma viragem de amplitude
+$v$ em cada vértice, que relação
+esperarias encontrar entre $n$ e $v$?
+
+Explica.
+
+\linhas{2}
+
+\end{enumerate}
+
+% =====================================
+% PARTE III
+% =====================================
+
+\parte{Parte III}{}
+
+Prime agora a tecla \textbf{I}.
+
+O gato desenha um
+\textbf{paralelogramo que não é
+um retângulo}.
+
+Observa o percurso e os valores
+das viragens nos blocos do programa.
+
+\begin{enumerate}[label=\textbf{3.\arabic*.}]
+
+\item
+Indica as quatro viragens
+e calcula a sua soma.
+
+\linhas{1}
+
+\item
+A soma obtida é igual à dos
+polígonos regulares?
+
+O que mostra este exemplo?
+
+Será suficiente para teres
+a certeza de que acontece
+o mesmo em \emph{todos}
+os polígonos convexos?
+
+\linhas{2}
+
+\end{enumerate}
+
+% =====================================
+% PARTE IV
+% =====================================
+
+\Needspace{12\baselineskip}
+
+\parte{Parte IV}{}
+
+A viragem realizada pelo gato
+num vértice corresponde à amplitude
+de um \textbf{ângulo externo}
+do polígono.
+
+Repara na relação entre esse ângulo
+e o ângulo interno do mesmo vértice.
+
+\begin{center}
+
+\begin{tikzpicture}[scale=.95,>=Stealth]
+
+\coordinate (B) at (0,0);
+\coordinate (C) at (2.2,1.6);
+
+\fill[verde!13]
+(B)--(1.05,0)
+arc (0:36:1.05)--cycle;
+
+\fill[azul!13]
+(B)--({.98*cos(36)},{.98*sin(36)})
+arc (36:180:.98)--cycle;
+
+\draw[very thick,azul,
+-{Stealth[length=2.8mm]}]
+(-3,0)--(-.12,0);
+
+\draw[very thick,azul,
+-{Stealth[length=2.8mm]}]
+(B)--(C);
+
+\draw[gray,dashed,thick]
+(B)--(2.7,0);
+
+\draw[verde!75!black]
+(1.05,0) arc (0:36:1.05);
+
+\draw[azul!90!black]
+({.98*cos(36)},{.98*sin(36)})
+arc (36:180:.98);
+
+\node at (-2.85,-.22) {A};
+\node[below] at (B) {B};
+\node[above] at (2.2,1.6) {C};
+
+\node[verde!60!black]
+at (1.44,.26) {$\beta$};
+
+\node[azul!90!black]
+at (-.48,.72) {$\alpha$};
+
+\node[gray,below]
+at (2.12,-.10) {prolongamento};
+
+\end{tikzpicture}
+
+\end{center}
+
+\begin{enumerate}[label=\textbf{4.\arabic*.}]
+
+\item
+Que relação existe entre a
+amplitude $\alpha$ do ângulo interno
+e a amplitude $\beta$ do ângulo
+externo correspondente?
+
+Justifica.
+
+\linhas{1}
+
+\item
+Num pentágono convexo existem
+cinco pares de ângulos,
+um interno e um externo adjacente,
+em cada vértice.
+
+Quanto somam, ao todo,
+os \textbf{cinco pares}?
+
+Como poderás encontrar a soma
+dos cinco ângulos internos?
+
+\linhas{2}
+
+\item
+Generaliza o teu raciocínio
+para um polígono convexo com
+$n$ lados e propõe uma expressão
+para a soma $S$ dos seus
+ângulos internos.
+
+Explica o significado
+de cada parcela.
+
+\linhas{2}
+\newpage
+\item
+Os exemplos do Scratch sugerem
+que a soma das viragens é $360^\circ$.
+
+\textbf{Por que razão isso acontece
+ao percorrer, uma única vez e sempre
+no mesmo sentido, o contorno de
+qualquer polígono convexo?}
+
+Explica sem te baseares
+apenas nos exemplos.
+
+\linhas{2}
+
+\end{enumerate}
+
+% =====================================
+% CONCLUSAO
+% =====================================
+
+\begin{conclusao}
+
+\textbf{A nossa conclusão}
+
+Para um polígono convexo com $n$ lados,
+a soma das amplitudes dos seus ângulos
+internos é
+
+\[
+\boxed{S=\rule{5.2cm}{.35pt}}
+\]
+
+A expressão é válida porque
+\rule{8.8cm}{.35pt}
+
+\vspace{5pt}
+
+\rule{\linewidth}{.35pt}
+
+\end{conclusao}
+
+\vspace{1mm}
+
+{\footnotesize\itshape
+Desafio facultativo:
+no programa 1, experimenta 5 lados
+e uma viragem de $144^\circ$.
+
+O gato regressa ao início,
+mas desenha um pentágono convexo?
+
+O que te ensina esta experiência?
+}

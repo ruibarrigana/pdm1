@@ -1,0 +1,358 @@
+\begin{center}
+{\large\bfseries\color{azulPDMI}Quanto precisa de virar o gato?}\\[2pt]
+{\small Resolução das questões 1.1 a 4.4, conclusão e desafio facultativo}
+\end{center}
+
+\begin{nota}
+\textbf{Condições consideradas.} Estuda-se o contorno de polígonos
+\textbf{convexos}, percorrido uma única vez, sem cruzamentos e sempre
+no mesmo sentido. Em cada vértice considera-se \textbf{um} ângulo
+externo, correspondente à mudança de direção do gato. O programa
+faz uma viragem depois de cada lado, \textbf{incluindo o último}.
+Mover o gato com a caneta levantada para o centro do palco não integra
+o percurso geométrico.
+\end{nota}
+
+\section*{Parte I}
+
+\noindent\textbf{1.1. Quatro lados e uma viragem de $80^\circ$}
+
+Não se obtém um quadrado. Num quadrado, os lados consecutivos são
+perpendiculares, pelo que a mudança de direção em cada vértice tem
+de ser de $90^\circ$. Se o gato virar apenas $80^\circ$, a direção
+do lado seguinte não será perpendicular à do lado anterior. A
+sequência de quatro segmentos de igual comprimento não fecha o
+contorno de um quadrado.
+
+A soma das viragens programadas é
+\[
+4\times80^\circ=320^\circ,
+\]
+isto é, $40^\circ$ menos do que uma volta completa. Esta conta ajuda
+a interpretar o resultado, mas a razão por que o contorno de um
+polígono convexo corresponde a uma volta completa será justificada
+na questão~4.4; não deve ser simplesmente pressuposta no lançamento
+da tarefa.
+
+\begin{center}
+\begin{minipage}{.46\linewidth}
+\centering
+\begin{tikzpicture}[scale=.72,>=Stealth]
+  \draw[thick,azulPDMI,line join=round]
+  (0,0)--(2,0)--(2.347,-1.970)--(.468,-2.654)--(-.532,-.922);
+  \fill[azulPDMI] (0,0) circle (2.5pt);
+  \fill[orange!85!black] (-.532,-.922) circle (2.5pt);
+  \node[above left] at (0,0) {$A$};
+  \node[left] at (-.532,-.922) {$A'$};
+  \draw[gray,dashed] (-.532,-.922)--(0,0);
+\end{tikzpicture}\\[-3pt]
+{\footnotesize $4$ viragens de $80^\circ$: $A'\neq A$.}
+\end{minipage}\hfill
+\begin{minipage}{.46\linewidth}
+\centering
+\begin{tikzpicture}[scale=.72,>=Stealth]
+  \draw[thick,azulPDMI,line join=round]
+    (0,0)--(2,0)--(2,-2)--(0,-2)--cycle;
+  \fill[azulPDMI] (0,0) circle (2.5pt);
+  \node[above left] at (0,0) {$A$};
+\end{tikzpicture}\\[-3pt]
+{\footnotesize $4$ viragens de $90^\circ$: quadrado.}
+\end{minipage}
+\end{center}
+
+\noindent\textbf{1.2. Viragem necessária para desenhar o quadrado}
+
+A amplitude correta é $\boxed{90^\circ}$. Como o gato anda sempre
+o mesmo número de passos, os quatro lados têm o mesmo comprimento.
+Ao realizar uma viragem de $90^\circ$ depois de cada lado, obtêm-se
+quatro ângulos retos e o contorno fecha sem cruzamentos. A soma das
+quatro mudanças de direção é
+\[
+90^\circ+90^\circ+90^\circ+90^\circ=360^\circ.
+\]
+
+\noindent\textbf{1.3. Comparação entre ângulo interno e viragem}
+
+A coincidência verificada no quadrado \textbf{não é geral}. Num
+triângulo equilátero, por exemplo, cada ângulo interno mede $60^\circ$,
+mas o gato tem de virar $120^\circ$ ao passar de um lado ao seguinte.
+Os dois ângulos são adjacentes e suplementares:
+\[
+60^\circ+120^\circ=180^\circ.
+\]
+Num pentágono regular, o ângulo interno mede $108^\circ$ e a
+viragem mede $72^\circ$. A igualdade entre a viragem e o ângulo
+interno no quadrado é, portanto, um caso particular.
+
+\begin{nota}
+\textbf{Resposta possível de um aluno.} «Não. No quadrado os dois
+ângulos medem $90^\circ$, mas num triângulo equilátero o gato vira
+$120^\circ$ e o ângulo interno mede $60^\circ$. Juntos perfazem
+$180^\circ$.»
+\end{nota}
+
+\section*{Parte II}
+
+\noindent\textbf{2.1. Tabela completa}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|
+>{\centering\arraybackslash}p{1.5cm}|
+>{\centering\arraybackslash}p{2.6cm}|
+>{\centering\arraybackslash}p{2.65cm}|}
+\hline
+\rowcolor{azulClaro}
+\textbf{Polígono} & \textbf{N.º de lados} &
+\textbf{Viragem por vértice} & \textbf{Soma das viragens}\\\hline
+Triângulo equilátero & $3$ & $120^\circ$ & $3\times120^\circ=360^\circ$\\\hline
+Quadrado & $4$ & $90^\circ$ & $4\times90^\circ=360^\circ$\\\hline
+Pentágono regular & $5$ & $72^\circ$ & $5\times72^\circ=360^\circ$\\\hline
+Hexágono regular & $6$ & $60^\circ$ & $6\times60^\circ=360^\circ$\\\hline
+\end{tabularx}
+\end{center}
+
+Em cada caso, o valor indicado é a \textbf{mudança de direção},
+não a amplitude de um ângulo interno. Os valores correspondem ao
+percurso do contorno do polígono regular convexo, sem cruzamentos e
+com uma viragem em cada vértice. A mera igualdade
+$n\,v=360^\circ$ não garante, sem outras condições, que um
+percurso arbitrário seja o contorno simples pretendido.
+
+\noindent\textbf{2.2. O que muda e o que se mantém?}
+
+À medida que o número de lados aumenta de $3$ para $6$, aumenta o
+número de viragens, mas diminui a amplitude de cada uma: $120^\circ$,
+$90^\circ$, $72^\circ$ e $60^\circ$. A \textbf{soma} das amplitudes das
+viragens mantém-se igual a $360^\circ$. Nos polígonos regulares,
+todas as viragens de um mesmo percurso têm a mesma amplitude.
+
+É importante distinguir três quantidades: \emph{número de lados},
+\emph{amplitude de cada viragem} e \emph{soma das viragens}. Esta
+última é a quantidade que se mantém nos casos estudados.
+
+\noindent\textbf{2.3. Generalização para $n$ lados}
+
+Se o gato percorre uma única vez o contorno de um polígono regular
+convexo com $n$ lados, efetuando uma viragem de amplitude $v$ em cada
+vértice, efetua $n$ viragens iguais. Como perfaz uma volta completa,
+\[
+\underbrace{v+v+\cdots+v}_{n\text{ parcelas}}=360^\circ
+\quad\Longleftrightarrow\quad
+n\,v=360^\circ.
+\]
+Logo,
+\[
+\boxed{v=\frac{360^\circ}{n}},\qquad n\in\mathbb{N},\ n\geq3.
+\]
+Esta relação dá a amplitude de \textbf{cada} ângulo externo de um
+\textbf{polígono regular convexo}. Não significa que todos os ângulos
+externos de um polígono convexo qualquer sejam iguais.
+
+\section*{Parte III}
+
+\noindent\textbf{3.1. Viragens no paralelogramo}
+
+Ao premir a tecla \textbf{I}, o gato desenha um paralelogramo não
+retângulo com quatro mudanças de direção, por esta ordem:
+\[
+60^\circ,\quad120^\circ,\quad60^\circ,\quad120^\circ.
+\]
+A sua soma é
+\[
+60^\circ+120^\circ+60^\circ+120^\circ=\boxed{360^\circ}.
+\]
+As amplitudes dos ângulos internos correspondentes são,
+respetivamente, $120^\circ$, $60^\circ$, $120^\circ$ e $60^\circ$.
+
+\noindent\textbf{3.2. Comparação e alcance da experiência}
+
+Sim, a soma é igual à obtida para os polígonos regulares: $360^\circ$.
+O paralelogramo mostra que \textbf{a igualdade das amplitudes das
+viragens não é necessária} para se obter essa soma: há duas viragens
+de $60^\circ$ e duas de $120^\circ$.
+
+Contudo, \textbf{um paralelogramo não demonstra} que a propriedade
+é válida para todos os polígonos convexos. A experiência fornece
+um novo exemplo favorável à conjetura, mas é necessário apresentar
+um argumento matemático que abranja qualquer polígono convexo.
+
+\begin{nota}
+\textbf{Resposta possível de um aluno.} «A soma continua a ser
+$360^\circ$, apesar de o gato não virar sempre o mesmo. Mas testar
+este paralelogramo não chega para saber o que acontece com todos os
+polígonos convexos.»
+\end{nota}
+
+\section*{Parte IV}
+
+\noindent\textbf{4.1. Relação entre o ângulo interno e o externo}
+
+O ângulo externo $\beta$ considerado na tarefa é formado pelo
+prolongamento de um lado do polígono e pelo lado seguinte. O ângulo
+interno $\alpha$ e esse ângulo externo têm um lado comum; os
+outros lados são semirretas opostas. São, portanto, \textbf{ângulos
+adjacentes suplementares}, pelo que
+\[
+\boxed{\alpha+\beta=180^\circ}
+\qquad\text{ou}\qquad
+\boxed{\alpha=180^\circ-\beta}.
+\]
+A mudança de direção do gato corresponde ao ângulo externo,
+\textbf{não}, em geral, ao ângulo interno do polígono.
+
+\noindent\textbf{4.2. O pentágono convexo}
+
+Um pentágono tem cinco vértices e, por isso, cinco pares de um
+ângulo interno com o respetivo externo adjacente. Cada par soma
+$180^\circ$; assim, a soma das amplitudes dos \textbf{dez ângulos}
+(cinco internos e cinco externos) é
+\[
+5\times180^\circ=900^\circ.
+\]
+A soma dos cinco ângulos externos é $360^\circ$. Logo, a soma dos
+cinco ângulos internos é
+\[
+\boxed{S_5=900^\circ-360^\circ=540^\circ}.
+\]
+A resposta não depende de o pentágono ser regular. Se fosse regular,
+teríamos cinco ângulos internos iguais a $108^\circ$ e verificar-se-ia
+$5\times108^\circ=540^\circ$.
+
+\noindent\textbf{4.3. Generalização para um polígono com $n$ lados}
+
+Considere-se um polígono convexo com $n\geq3$ lados. Designemos por
+$\alpha_i$ a amplitude do ângulo interno do vértice $i$ e por
+$\beta_i$ a amplitude do ângulo externo correspondente, escolhido
+sempre no mesmo sentido do percurso. Como cada par é suplementar,
+\[
+\alpha_i+\beta_i=180^\circ
+\qquad(i=1,\ldots,n).
+\]
+Somando estas $n$ igualdades, obtém-se
+\[
+\underbrace{\sum_{i=1}^{n}\alpha_i}_{S}
++\underbrace{\sum_{i=1}^{n}\beta_i}_{360^\circ}
+=n\times180^\circ.
+\]
+Consequentemente,
+\[
+\boxed{S=n\times180^\circ-360^\circ=(n-2)\times180^\circ}.
+\]
+Na expressão, $n\times180^\circ$ é a soma das amplitudes dos
+$n$ pares de ângulos suplementares; subtraem-se $360^\circ$ porque
+essa é a soma das amplitudes dos ângulos externos. O resultado é a
+soma das amplitudes dos ângulos \textbf{internos} do polígono.
+
+Esta dedução não exige que os ângulos internos sejam todos iguais;
+por isso, aplica-se aos polígonos convexos regulares e não regulares.
+
+\noindent\textbf{4.4. Justificação geométrica da soma dos ângulos externos}
+
+A explicação não deve limitar-se à afirmação de que o gato
+«regressou ao sítio de onde partiu». Na verdade, a orientação final
+poderia coincidir com a inicial após zero, uma ou várias voltas
+completas; e um desenho poderia fechar com autointerseções.
+
+A propriedade resulta das condições geométricas do percurso:
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=1.15cm,itemsep=2pt,topsep=3pt]
+\item o gato percorre \textbf{uma única vez} o contorno de um polígono
+\textbf{convexo}, sem o atravessar;
+\item em cada vértice muda de direção \textbf{sempre no mesmo sentido},
+pois todos os ângulos externos considerados são viragens exteriores;
+\item ao acompanhar, por ordem, as orientações dos lados de um
+contorno convexo, a direção percorre as orientações de uma
+\textbf{única volta completa}, sem retroceder nem fazer uma segunda volta.
+\end{enumerate}
+
+Assim, a soma das mudanças de direção, incluindo a última viragem
+que recupera a orientação inicial, é
+\[
+\boxed{\beta_1+\beta_2+\cdots+\beta_n=360^\circ}.
+\]
+
+\textbf{Uma forma de tornar o argumento visível na discussão:}
+imaginar os vetores orientados de cada lado transportados, sem
+rodar, para um mesmo ponto. Como o contorno é convexo, as direções
+sucedem-se pela mesma ordem e os ângulos entre direções consecutivas
+preenchem exatamente uma volta em torno desse ponto. Não há
+sobreposições de voltas nem direções percorridas em sentido inverso.
+Este argumento geométrico explica a regularidade para \textbf{qualquer}
+polígono convexo, em vez de depender de uma lista finita de testes.
+
+\begin{nota}
+\textbf{Precisão matemática.} A afirmação de que as direções dos
+lados perfazem exatamente uma volta usa a \emph{convexidade} e o
+facto de o contorno ser percorrido uma vez. Não decorre apenas de o
+gato terminar na mesma posição ou orientação. Uma justificação
+mais formal pode recorrer à variação total de direção num contorno
+convexo; ao nível do 7.º ano, o argumento por uma volta completa,
+apoiado na representação das direções, é a explicação geométrica
+adequada a explorar e discutir.
+\end{nota}
+
+\section*{Conclusão a registar na ficha}
+
+\begin{conclusao}
+Para um polígono convexo com $n$ lados, a soma das amplitudes dos
+seus ângulos internos é
+\[
+\boxed{S=(n-2)\times180^\circ}.
+\]
+\textbf{Justificação:} em cada vértice, o ângulo interno e o externo
+adjacente somam $180^\circ$; existem $n$ pares desse tipo. Ao
+percorrer uma vez o contorno de um polígono convexo, a soma dos
+ângulos externos é $360^\circ$. Por isso, a soma dos ângulos
+internos obtém-se subtraindo $360^\circ$ a $n\times180^\circ$.
+\end{conclusao}
+
+\Needspace{14\baselineskip}
+\section*{Desafio facultativo}
+
+O gato desenha uma \textbf{estrela de cinco pontas} (pentagrama),
+em que os segmentos se cruzam. Ao fim dos cinco segmentos, volta
+à posição inicial, mas o desenho \textbf{não é o contorno simples
+de um pentágono convexo}. A soma das cinco viragens programadas é
+\[
+5\times144^\circ=\boxed{720^\circ}=2\times360^\circ.
+\]
+O gato completou \textbf{duas voltas na orientação}, embora tenha
+regressado ao ponto de partida. Logo, fechar um percurso não é
+condição suficiente para garantir que a soma das viragens seja
+$360^\circ$. É indispensável explicitar as condições de
+\emph{convexidade}, \emph{contorno simples} e \emph{uma única volta}.
+
+\begin{center}
+\begin{tikzpicture}[scale=.87,line join=round]
+\foreach \k in {0,...,4}{
+  \coordinate (V\k) at ({90-72*\k}:1.85);
+}
+\draw[very thick,azulPDMI]
+ (V0)--(V2)--(V4)--(V1)--(V3)--cycle;
+\fill[azulPDMI] (V0) circle (2.2pt);
+\node[above] at (V0) {Início / fim};
+\end{tikzpicture}
+\end{center}
+
+\section*{Síntese da resolução e cuidados na discussão}
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=1.05cm,itemsep=3pt,topsep=3pt]
+\item \textbf{O que o Scratch permite observar:} valores de viragem
+para polígonos regulares e um exemplo não regular em que a soma
+exterior continua a ser $360^\circ$.
+\item \textbf{O que precisa de ser justificado:} por que razão a
+mudança total de direção, num único percurso do contorno convexo,
+é uma volta completa.
+\item \textbf{A passagem essencial:} a relação
+$\alpha_i+\beta_i=180^\circ$ em cada um dos $n$ vértices, seguida
+da subtração da soma dos ângulos externos.
+\item \textbf{Um erro a prevenir:} escrever $v=360^\circ/n$
+para \emph{cada} ângulo externo de um polígono não regular. Essa
+igualdade só é válida quando as viragens são todas iguais.
+\item \textbf{Outro erro a prevenir:} concluir que a soma é $360^\circ$
+por o gato ter regressado ao ponto inicial; a estrela mostra por
+que esse argumento é insuficiente.
+\item \textbf{Articulação com a primeira aula:} chega-se à mesma
+expressão $S=(n-2)\times180^\circ$, mas por ângulos externos e
+suplementaridade, \textbf{sem decompor o polígono em triângulos}.
+\end{enumerate}
